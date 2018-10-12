@@ -31,7 +31,7 @@ namespace KatlaSport.WebApi.Controllers
         [SwaggerResponse(HttpStatusCode.InternalServerError)]
         public async Task<IHttpActionResult> GetHiveSectionsAsync()
         {
-            var hives = await _hiveSectionService.GetHiveSectionsAsync().ConfigureAwait(false);
+            var hives = await _hiveSectionService.GetHiveSectionsAsync();
             return Ok(hives);
         }
 
@@ -42,7 +42,7 @@ namespace KatlaSport.WebApi.Controllers
         [SwaggerResponse(HttpStatusCode.InternalServerError)]
         public async Task<IHttpActionResult> GetHiveSectionAsync(int hiveSectionId)
         {
-            var hive = await _hiveSectionService.GetHiveSectionAsync(hiveSectionId).ConfigureAwait(false);
+            var hive = await _hiveSectionService.GetHiveSectionAsync(hiveSectionId);
             return Ok(hive);
         }
 
@@ -53,7 +53,7 @@ namespace KatlaSport.WebApi.Controllers
         [SwaggerResponse(HttpStatusCode.InternalServerError)]
         public async Task<IHttpActionResult> SetStatus([FromUri] int hiveSectionId, [FromUri] bool deletedStatus)
         {
-            await _hiveSectionService.SetStatusAsync(hiveSectionId, deletedStatus).ConfigureAwait(false);
+            await _hiveSectionService.SetStatusAsync(hiveSectionId, deletedStatus);
             return ResponseMessage(Request.CreateResponse(HttpStatusCode.NoContent));
         }
 
